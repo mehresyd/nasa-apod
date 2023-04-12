@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { getPictureOfTheDay } from './api';
 
 function App() {
+  React.useEffect(() => {
+    console.log('use effect')
+
+    const getPicture = async () => {
+      const response = await getPictureOfTheDay()
+      console.log('response in use effect', response)
+    }
+
+    getPicture()
+  }, [])
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <h1>NASA Astornomy Picture of the Day</h1>
+     <img src={''}/>
     </div>
   );
 }
